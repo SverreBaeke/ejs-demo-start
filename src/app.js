@@ -1,13 +1,16 @@
 // import statements
 import express from "express";
 import path from "path";
-import {home,about,contact,privacy} from "./controllers/page-controller.js"
+import {home,about,contact,privacy} from "./controllers/page-controller.js";
+import expressLayouts from 'express-ejs-layouts'
 
 // create an instance of express
 const app = express();
 
-	
+app.use(expressLayouts)
+
 app.set('view engine', 'ejs');
+app.set("layout", "layout/main")
 app.set("views", path.resolve("src", "views"));
 
 // serve static files from the public folder
@@ -19,6 +22,12 @@ app.get("/", home)
 app.get("/about", about)
 app.get("/contact", contact)
 app.get("/privacy", privacy)
+
+app.get("*", (req, res) => {
+  res.status(404).render("errors/404", {
+    layout: "layout/error",
+  });
+});
 
 // start the server, listen on port defined in .env file
 app.listen(process.env.PORT, () => {
