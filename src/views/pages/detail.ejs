@@ -1,0 +1,15 @@
+<ul class="dinos">
+    <li class="<% if (dino.isHerbivore) {%>
+        <%= 'green'%>
+        <%} else {%>
+         <%='red'%>
+         <%} %>">
+        <h1>
+            <%= uppie(dino.name) %>
+        </h1>
+        <img src=/assets/images/<%=dino.image%> alt="<%= dino.name%>">
+            <p>
+                <%- highlight(dino.description)%>
+            </p>
+    </li>
+</ul>

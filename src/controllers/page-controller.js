@@ -4,7 +4,8 @@ export const home = (req,res) => {
     res.render('pages/home', {
         title: "Dinosaurs around the world",
         content: "Welcome to the world of dinosaurs",
-        navItems
+        navItems,
+        
       })
 };
 

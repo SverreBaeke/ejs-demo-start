@@ -1,0 +1,17 @@
+<h1>Dinosaurs</h1>
+
+<section>
+    <ul class="dinos">
+       <%   dinosaurs.forEach(dinosaur => {%>
+             <li class="<% if (dinosaur.isHerbivore) {%>
+               <%= 'green'%>
+               <%} else {%>
+                <%='red'%>
+                <%} %>">
+                <h2><%- emojify(dinosaur.name, "highlight")%></h2>
+                <img src=assets/images/<%= dinosaur.image%> alt="<%= dinosaur.name%>">
+                <a href="dinosaurs/<%= dinosaur.slug %>">detail</a>
+             </li>
+             <%})%>        
+    </ul>
+</section>
